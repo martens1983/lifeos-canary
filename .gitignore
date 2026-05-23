@@ -33,8 +33,14 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
-# vercel
-.vercel
+# vercel — gitignore all generated state except project.json. The
+# project.json file is committed so substrate-driven canary deploys
+# (lifeos-devops DevOps cockpit Item 4 Gate 2.5 UI preview path) can
+# find the linked Vercel project after `git clone` inside a fresh
+# Vercel Sandbox session. Without it, `vercel deploy --yes` hits an
+# interactive prompt that --yes can't answer.
+.vercel/*
+!.vercel/project.json
 
 # typescript
 *.tsbuildinfo
